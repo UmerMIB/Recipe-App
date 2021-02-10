@@ -1,0 +1,10 @@
+[0;1;31m●[0m mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Tue 2021-02-09 17:36:38 PKT; 13s ago
+       Docs: https://docs.mongodb.org/manual
+    Process: 109915 ExecStart=/usr/bin/mongod --config /etc/mongod.conf [0;1;31m(code=exited, status=14)[0m
+   Main PID: 109915 (code=exited, status=14)
+
+فروری 09 17:36:38 umermib-Latitude-E5450 systemd[1]: Started MongoDB Database Server.
+فروری 09 17:36:38 umermib-Latitude-E5450 systemd[1]: [0;1;39m[0;1;31m[0;1;39mmongod.service: Main process exited, code=exited, status=14/n/a[0m
+فروری 09 17:36:38 umermib-Latitude-E5450 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmongod.service: Failed with result 'exit-code'.[0m

@@ -4,41 +4,41 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
-const recipeRouter = require('./controllers/recipe');
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
 
 mongoose.connect(MONGODB_URI, {
-	useNewUrlParser: true,
+    useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false
 });
 db.on('open', () => {
-	console.log('Mongo is Connected');
+    console.log('Mongo is Connected');
 });
-
 /* Middleware */
 app.use(express.json());
-if (process.env.NODE_ENV !== 'development') {
-	app.use(express.static('public'));
+if (process.env.NODE_ENV !== 'development'){
+  app.use(express.static('public'))
 }
 
 /* Controller Goes Here Remove the tes*/
-app.use('/', recipeRouter);
 app.use('/api/blogs', require('./controllers/blogs'));
 app.use('/api/comments', require('./controllers/comments'));
 /* Controller Ends here */
 //LISTENER
 
+
 // for react router
 app.get('*', (req, res) => {
-	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')));
-});
+	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
+})
 
 app.listen(PORT, () => {
-	console.log(`API Listening on port ${PORT}`);
+    console.log(`API Listening on port ${PORT}`);
 });
+
+
 
 /* Vanilla Node Server
 const http = require('http'); // The node http module allow you to create servers

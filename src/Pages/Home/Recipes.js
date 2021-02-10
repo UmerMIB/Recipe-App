@@ -30,7 +30,7 @@ const Recipes = ({ recipes }) => (
 							<button className="recipe_buttons">
 								<Link
 									to={{
-										pathname: `/recipe/${recipe.recipe_id}`,
+										pathname: `/recipe/${recipe.id}`,
 										state: { recipe: recipe.title }
 									}}
 								>
