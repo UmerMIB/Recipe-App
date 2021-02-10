@@ -1,4 +1,3 @@
-
 // Explanation for Students ---- This is requires the gulp package from node modules
 // Gulp exports an object with many methods
 // task , watch, src and pipe will be the main ones we use today but see the gulp docs to expand and also see how you might refactor it to no longer use task and maybe use exports, series and parallells
@@ -23,10 +22,9 @@ const reload = browserSync.reload;
 // Explanation for Students ---- This is a NODEJS standard method that lets us call scripts in our package.json or node_modules from our code
 var exec = require('child_process').exec;
 
-
 // Explanation for Students ---- This is the brain child for our self made development server
 
-gulp.task('default', (cb) => {
+gulp.task('default', cb => {
 	// Compile Styles
 	exec('npm run styles', function(err, stdout, stderr) {
 		console.log(stdout);
@@ -41,19 +39,20 @@ gulp.task('default', (cb) => {
 	});
 	// SERVE BACKEND
 	nodemon({
-	 script: 'server.js',
-	 env: { 'NODE_ENV': 'development'}
- });
- // SERVE  FRONT END WITH PROXY TO BACKEND
+		script: 'server.js',
+		env: { NODE_ENV: 'development' }
+	});
+
+	// SERVE  FRONT END WITH PROXY TO BACKEND
 	browserSync.init({
-	 proxy: {
-		 target: 'http://localhost:8000',
-		 ws: true
-	 },
-	 serveStatic: ['./public']
+		proxy: {
+			target: 'http://localhost:8000',
+			ws: true
+		},
+		serveStatic: ['./public']
 	});
 	// SET UP WATCJERS TO LISTEN TO CHANGES IN FILES
- 	gulp.watch('./src/scss/**/*',  gulp.task('styles'));
+	gulp.watch('./src/scss/**/*', gulp.task('styles'));
 	gulp.watch('./src/components/**/*', gulp.task('webpack'));
 	gulp.watch('./src/**/*.js', gulp.task('webpack'));
 	gulp.watch('./src/*', gulp.task('webpack'));
@@ -67,11 +66,11 @@ gulp.task('default', (cb) => {
 			'./src/**/*'
 		])
 		.on('change', reload);
-		cb()
+	cb();
 });
 
 // Explanation for Students ---- This is compiles our styles
-gulp.task('styles', (cb) => {
+gulp.task('styles', cb => {
 	gulp
 		.src('src/scss/**/*.scss')
 		.pipe(
@@ -86,9 +85,8 @@ gulp.task('styles', (cb) => {
 		)
 		.pipe(gulp.dest('./public/css'))
 		.pipe(browserSync.stream());
-		cb()
+	cb();
 });
-
 
 // Explanation for Students ---- This is for the development build
 gulp.task('webpack', cb => {

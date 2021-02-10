@@ -1,6 +1,6 @@
 export const recipes = [
 	{
-		id: 1,
+		_id: 1,
 		title: 'recepi1',
 		body: 'body',
 		image_url:
@@ -8,7 +8,7 @@ export const recipes = [
 		publisher: 'Natalia'
 	},
 	{
-		id: 2,
+		_id: 2,
 		title: 'recepi1',
 		body: 'body',
 		image_url:
@@ -16,7 +16,7 @@ export const recipes = [
 		publisher: 'Natalia'
 	},
 	{
-		id: 3,
+		_id: 3,
 		title: 'recepi1',
 		body: 'body',
 		image_url:

@@ -122,11 +122,19 @@ recipeRouter
 				});
 			recipe.findById(req.query.id).then(
 				foundRecipe => {
-					res.status(200).json({
-						success: true,
-						message: 'Recipe Found',
-						data: foundRecipe
-					});
+					if (foundRecipe)
+						res.status(200).json({
+							success: true,
+							message: 'Recipe Found',
+							data: foundRecipe
+						});
+					else
+						res.status(400).json({
+							success: false,
+							error: {
+								message: 'No Recipe Exists'
+							}
+						});
 				},
 				error => {
 					res.status(400).json({
