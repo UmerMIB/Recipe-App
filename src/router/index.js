@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import routes from './routes';
+import Navbar from '../Components/Navbar';
 
-const App = props => {
+const App = () => {
 	return (
 		<Router>
+			<Navbar />
 			<Switch>
 				{routes.map(({ Component, key, path }) => (
 					<Route

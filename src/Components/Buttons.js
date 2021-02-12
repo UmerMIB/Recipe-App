@@ -4,7 +4,7 @@ import '../scss/Components/Button.scss';
 const Button = ({ title, className, onClick, type }, props) => {
 	return (
 		<button
-			className={className ? `Button ${className}` : 'Button'}
+			className={className ? 'Button ' + className : 'Button'}
 			onClick={onClick}
 			type={type ? type : 'text'}
 			{...props}

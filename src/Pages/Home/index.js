@@ -25,11 +25,7 @@ export default function App() {
 	const getRecipe = () => {};
 
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1 className="App-title">Recipe Search</h1>
-			</header>
-
+		<div className="RecipeSearch">
 			<Form getRecipe={getRecipe} />
 			<Recipes recipes={recipes} />
 		</div>

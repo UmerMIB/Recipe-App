@@ -52,9 +52,9 @@ gulp.task('default', cb => {
 		serveStatic: ['./public']
 	});
 	// SET UP WATCJERS TO LISTEN TO CHANGES IN FILES
-	gulp.watch('./src/scss/**/*', gulp.task('styles'));
-	gulp.watch('./src/components/**/*', gulp.task('webpack'));
-	gulp.watch('./src/**/*.js', gulp.task('webpack'));
+	gulp.watch('./src/scss/**/**/*', gulp.task('styles'));
+	gulp.watch('./src/Components/*.js', gulp.task('webpack'));
+	gulp.watch('./src/Pages/**/*.js', gulp.task('webpack'));
 	gulp.watch('./src/*', gulp.task('webpack'));
 	// LISTEN FOR WHEN TO RELOAD PAGES
 	gulp
@@ -91,8 +91,8 @@ gulp.task('styles', cb => {
 // Explanation for Students ---- This is for the development build
 gulp.task('webpack', cb => {
 	exec('npm run dev:webpack', function(err, stdout, stderr) {
-		console.log(stdout);
-		console.log(stderr);
+		console.log('stdout', stdout);
+		console.log('stderr', stderr);
 		cb(err);
 	});
 });

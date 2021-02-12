@@ -1,0 +1,86 @@
+.Button {
+  border: solid 2px #e74c3c;
+  background: transparent;
+  padding: 0.4rem 0.9rem;
+  margin: 0 0.2rem;
+  border-radius: 1px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-left: 0.7rem; }
+
+.Form__input {
+  background: transparent;
+  border: 0;
+  border-bottom: solid 2px #2c3e50;
+  margin-right: 10px;
+  letter-spacing: 2px;
+  width: 10%;
+  padding: 0.4rem; }
+
+.RecipeSearch {
+  text-align: center; }
+
+.Active-recipe {
+  margin: 0 auto;
+  width: 60%; }
+  .Active-recipe .Active-recipe__img {
+    height: 500px !important; }
+  .Active-recipe .Active-recipe__title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 1rem 0; }
+  .Active-recipe .Active-recipe__publisher {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 1rem; }
+  .Active-recipe .Active-recipe__publisher span {
+    text-transform: none;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-left: 5px; }
+
+.Create-Recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; }
+  .Create-Recipe .Create-Recipe__title {
+    font-family: sans-serif;
+    text-align: center; }
+  .Create-Recipe .Create-Recipe__Card {
+    max-width: 600px;
+    width: 100%;
+    border: 5px solid; }
+  .Create-Recipe .Create-Recipe__field {
+    display: flex;
+    align-items: baseline;
+    align-content: center; }
+    .Create-Recipe .Create-Recipe__field .Create-Recipe__input {
+      border: none;
+      border-bottom: 1px solid;
+      margin: 10px; }
+    .Create-Recipe .Create-Recipe__field .Create-Recipe__submit-btn {
+      width: 100%;
+      margin-left: 0px; }
+
+.Navbar {
+  text-align: center;
+  background-color: #2c3e50;
+  height: 90px;
+  padding: 30px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center; }
+  .Navbar .Navbar-title {
+    font-size: 1.5em;
+    color: white !important;
+    padding: 0px 10px;
+    font-family: sans-serif;
+    font-weight: 800; }
+    .Navbar .Navbar-title .Navbar-title:hover {
+      text-decoration: none; }
+    .Navbar .Navbar-title .Navbar-title:focus {
+      outline: none; }
+
