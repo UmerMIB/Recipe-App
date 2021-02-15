@@ -12,15 +12,17 @@
         max-width: 600px;
         width: 100%;
         border: 5px solid;
-    }
-    .Create-Recipe__field{
-        display: flex;
-        align-items: baseline;
-        align-content: center;
-        .Create-Recipe__input{
-            border: none;
-        border-bottom: 1px solid;
+        padding: 10px !important;
         margin: 10px;
+        .Create-Recipe__field{
+            display: flex;
+            align-items: baseline;
+            align-content: center;
+            .Create-Recipe__input{
+                border: none;
+                border-bottom: 1px solid;
+                margin: 10px;
+            }  
         }
         .Create-Recipe__submit-btn{
             width: 100%;

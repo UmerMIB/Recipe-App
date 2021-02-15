@@ -51,17 +51,18 @@
     text-align: center; }
   .Create-Recipe .Create-Recipe__Card {
     max-width: 600px;
-    width: 100%;
-    border: 5px solid; }
-  .Create-Recipe .Create-Recipe__field {
-    display: flex;
-    align-items: baseline;
-    align-content: center; }
-    .Create-Recipe .Create-Recipe__field .Create-Recipe__input {
-      border: none;
-      border-bottom: 1px solid;
-      margin: 10px; }
-    .Create-Recipe .Create-Recipe__field .Create-Recipe__submit-btn {
+    border: 5px solid;
+    padding: 10px !important;
+    margin: 10px; }
+    .Create-Recipe .Create-Recipe__Card .Create-Recipe__field {
+      display: flex;
+      align-items: baseline;
+      align-content: center; }
+      .Create-Recipe .Create-Recipe__Card .Create-Recipe__field .Create-Recipe__input {
+        border: none;
+        border-bottom: 1px solid;
+        margin: 10px; }
+    .Create-Recipe .Create-Recipe__Card .Create-Recipe__submit-btn {
       width: 100%;
       margin-left: 0px; }
 

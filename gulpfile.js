@@ -55,7 +55,8 @@ gulp.task('default', cb => {
 	gulp.watch('./src/scss/**/**/*', gulp.task('styles'));
 	gulp.watch('./src/Components/*.js', gulp.task('webpack'));
 	gulp.watch('./src/Pages/**/*.js', gulp.task('webpack'));
-	gulp.watch('./src/*', gulp.task('webpack'));
+	gulp.watch('./src/router/*.js', gulp.task('webpack'));
+	// gulp.watch('./src/*', gulp.task('webpack'));
 	// LISTEN FOR WHEN TO RELOAD PAGES
 	gulp
 		.watch([
