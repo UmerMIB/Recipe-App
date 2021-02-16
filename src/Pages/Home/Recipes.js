@@ -40,16 +40,12 @@ const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 				.catch(err => {
 					console.log('err', err.response.data);
 					let error = err?.response?.data;
-
-					toast.error(
-						`Something went wrong ${
-							!!error.error.message
-								? error.error.message
-								: !!error.message
-								? error.message
-								: ''
-						}`
-					);
+					error = !!error.error.message
+						? error.error.message
+						: !!error.message
+						? error.message
+						: '';
+					toast.error(`Something went wrong ${error}`);
 				});
 		}
 

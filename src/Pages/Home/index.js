@@ -57,7 +57,7 @@ export default function App() {
 					? error.message
 					: '';
 				toast.error(`Something went wrong ${error}`);
-				setRecipies(null);
+				setRecipies([]);
 			});
 	};
 
@@ -80,7 +80,6 @@ export default function App() {
 				handleDeleteRecipe={handleDeleteRecipe}
 				temp={temp}
 			/>
-			{/* <ToastContainer position={toast.POSITION.TOP_RIGHT} /> */}
 		</div>
 	);
 }
