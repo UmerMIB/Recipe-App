@@ -13,7 +13,7 @@
     "build:webpack": "webpack --mode production --env.NODE_ENV=production",
     "dev": "gulp",
     "styles": "gulp styles",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm install"
   },
   "author": "",
