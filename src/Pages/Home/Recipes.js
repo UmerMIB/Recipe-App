@@ -75,7 +75,9 @@ const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 				</Dialog>
 			</div>
 			<div className="row">
-				{!!recipes?.length ? (
+				{recipes ? (
+					<div className="Recipes__no-recipe">loading</div>
+				) : !!recipes?.length ? (
 					recipes.map(recipe => {
 						return (
 							<div

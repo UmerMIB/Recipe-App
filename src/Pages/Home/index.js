@@ -6,7 +6,7 @@ import '../../scss/Pages/Home/index.scss';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function App() {
-	const [recipes, setRecipies] = useState([]);
+	const [recipes, setRecipies] = useState(null);
 	const [ingredient, setIngredient] = useState('');
 	const [temp, setTemp] = useState('');
 
@@ -57,7 +57,7 @@ export default function App() {
 					? error.message
 					: '';
 				toast.error(`Something went wrong ${error}`);
-				setRecipies([]);
+				setRecipies(null);
 			});
 	};
 
