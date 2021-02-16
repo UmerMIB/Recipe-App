@@ -15,6 +15,7 @@ function RecipeDetail({ match }) {
 	const history = useHistory();
 	const [open, setOpen] = useState(false);
 	const [data, setData] = useState(null);
+	// const [errMess, setErrMess] = useState(null);
 
 	useEffect(() => {
 		axios

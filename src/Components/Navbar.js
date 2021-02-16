@@ -7,7 +7,7 @@ const Navbar = () => {
 		<div className="Navbar">
 			<div>
 				<NavLink to="/" className="Navbar__brand">
-					Recipe App
+					Happy Recipe
 				</NavLink>
 			</div>
 			<div>
