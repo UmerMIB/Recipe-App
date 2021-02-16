@@ -154,17 +154,19 @@ recipeRouter
 	// Destroy
 	.delete(async (req, res) => {
 		try {
-			if (!req.query.id)
+			console.log('req.body', req.body);
+			if (!req.body.id)
 				return res.status(400).json({
 					success: false,
 					error: {
 						message: 'Recipe ID is required'
 					}
 				});
-			const foundRecipe = await recipe.findByIdAndDelete(req.query.id);
+			const foundRecipe = await recipe.findByIdAndDelete(req.body.id);
 			res.status(200).json({
 				success: true,
-				message: 'Recipe Deleted Successfully'
+				message: 'Recipe Deleted Successfully',
+				data: foundRecipe
 			});
 		} catch (error) {
 			res.status(400).json({
@@ -209,7 +211,9 @@ recipeRouter
 				error => {
 					res.status(400).json({
 						success: false,
-						error: error
+						error: {
+							message: 'Recipe not found'
+						}
 					});
 				}
 			);
@@ -219,6 +223,45 @@ recipeRouter
 				error: error
 			});
 		}
+	});
+
+recipeRouter
+	.route('/search')
+	.all((req, res, next) => {
+		res.setHeader('Content-Type', 'application/json');
+		next();
+	})
+	.get(async (req, res) => {
+		if (!req.query.ingredient)
+			return res.status(400).json({
+				success: false,
+				error: {
+					message: 'Ingredient name is required'
+				}
+			});
+		recipe
+			.find({ ingredients: { $all: [req.query.ingredient] } })
+			.then(
+				data => {
+					res.status(200).json({
+						success: true,
+						data: data
+					});
+				},
+				err =>
+					res.status(400).json({
+						success: false,
+						error: {
+							message: 'No recipe found'
+						}
+					})
+			)
+			.catch(err =>
+				res.status(400).json({
+					success: false,
+					error: err
+				})
+			);
 	});
 
 module.exports = recipeRouter;

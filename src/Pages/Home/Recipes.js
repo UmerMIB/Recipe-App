@@ -1,23 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../Components/Buttons';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import '../../scss/Pages/Home/Recipes.scss';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const Recipes = ({ recipes }) => {
+const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 	const history = useHistory();
 	const [open, setOpen] = React.useState(false);
+	const [toDeleteID, setToDeleteID] = useState('');
 
 	const handleRecipeButton = recipe => {
 		history.push(`/recipe/${recipe._id}`);
 	};
 
-	const handleClickOpen = () => {
+	const handleClickOpen = recipe => {
+		setToDeleteID(recipe);
 		setOpen(true);
 	};
 
-	const handleClose = () => {
+	const handleOpen = deleteRecipe => {
+		if (deleteRecipe) {
+			axios
+				.delete('/api/id', {
+					data: {
+						id: toDeleteID._id
+					}
+				})
+				.then(({ data }) => {
+					console.log('data', data);
+					if (data.success) {
+						toast.success(data.message);
+						handleDeleteRecipe(deleteRecipe);
+					}
+				})
+				.catch(err => {
+					console.log('err', err.response.data);
+					let error = err?.response?.data;
+
+					toast.error(
+						`Something went wrong ${
+							!!error.error.message
+								? error.error.message
+								: !!error.message
+								? error.message
+								: ''
+						}`
+					);
+				});
+		}
+
 		setOpen(false);
 	};
 
@@ -26,16 +61,16 @@ const Recipes = ({ recipes }) => {
 			<div>
 				<Dialog
 					open={open}
-					onClose={handleClose}
+					onClose={handleOpen}
 					aria-labelledby="alert-dialog-title"
 					aria-describedby="alert-dialog-description"
 				>
 					<DialogTitle id="alert-dialog-title">
-						Are you Sure you want to delete this recipe?
+						Are you Sure you want to delete {toDeleteID.title} recipe?
 					</DialogTitle>
 					<DialogActions>
-						<Button onClick={handleClose} title="Disagree" />
-						<Button onClick={handleClose} title="Agree" />
+						<Button onClick={handleOpen} title="Disagree" />
+						<Button onClick={() => handleOpen(toDeleteID)} title="Agree" />
 					</DialogActions>
 				</Dialog>
 			</div>
@@ -49,7 +84,7 @@ const Recipes = ({ recipes }) => {
 						>
 							<div className="Recipes__box">
 								<img
-									className="recipe__box-img"
+									className="Recipes__box-img"
 									src={recipe.image_url}
 									alt={recipe.title}
 								/>
@@ -63,12 +98,15 @@ const Recipes = ({ recipes }) => {
 										Publisher: <span>{recipe.publisher}</span>
 									</p>
 								</div>
-								<div>
+								<div className="Recipes__buttons">
 									<Button
 										onClick={() => handleRecipeButton(recipe)}
 										title={'View Recipe'}
 									/>
-									<Button title={'Delete'} onClick={handleClickOpen} />
+									<Button
+										title={'Delete'}
+										onClick={() => handleClickOpen(recipe)}
+									/>
 								</div>
 							</div>
 						</div>

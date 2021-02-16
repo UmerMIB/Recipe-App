@@ -1,16 +1,19 @@
 .Recipes__box {
-    background: #fff;
-    padding-bottom: 2rem;
-    border-radius: 5px;
-    box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
-    text-align: left;
-    overflow: hidden;
-  
-  
+  background: #fff;
+  padding-bottom: 2rem;
+  border-radius: 5px;
+  box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.75);
+  text-align: left;
+  overflow: hidden;
+  .Recipes__box-img {
+    height: 300px;
+    object-fit: revert;
+    width: 100%;
+  }
+
   .Recipes__text {
     margin-left: 15px;
-  
-  
+
     .Recipes__title {
       color: #e74c3c;
       text-transform: uppercase;
@@ -25,7 +28,11 @@
       letter-spacing: 2px;
     }
   }
-  
+  .Recipes__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .Recipes__subtitle span {
     text-transform: none;
     font-weight: 400;

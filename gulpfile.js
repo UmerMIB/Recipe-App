@@ -73,7 +73,11 @@ gulp.task('default', cb => {
 // Explanation for Students ---- This is compiles our styles
 gulp.task('styles', cb => {
 	gulp
-		.src('src/scss/**/*.scss')
+		.src([
+			'src/scss/**/*.scss',
+			'../node_modules/react-toastify/dist/ReactToastify.css',
+			'../node_modules/bootstrap/scss/bootstrap.scss'
+		])
 		.pipe(
 			sass({
 				outputStyle: 'compressed'
