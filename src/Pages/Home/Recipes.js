@@ -75,43 +75,47 @@ const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 				</Dialog>
 			</div>
 			<div className="row">
-				{recipes.map(recipe => {
-					return (
-						<div
-							key={recipe.title}
-							className="col-md-4"
-							style={{ marginBottom: '2rem' }}
-						>
-							<div className="Recipes__box">
-								<img
-									className="Recipes__box-img"
-									src={recipe.image_url}
-									alt={recipe.title}
-								/>
-								<div className="Recipes__text">
-									<h5 className="Recipes__title">
-										{recipe.title.length < 20
-											? `${recipe.title}`
-											: `${recipe.title.substring(0, 25)}...`}
-									</h5>
-									<p className="Recipes__subtitle">
-										Publisher: <span>{recipe.publisher}</span>
-									</p>
-								</div>
-								<div className="Recipes__buttons">
-									<Button
-										onClick={() => handleRecipeButton(recipe)}
-										title={'View Recipe'}
+				{!!recipes?.length ? (
+					recipes.map(recipe => {
+						return (
+							<div
+								key={recipe.title}
+								className="col-md-4"
+								style={{ marginBottom: '2rem' }}
+							>
+								<div className="Recipes__box">
+									<img
+										className="Recipes__box-img"
+										src={recipe.image_url}
+										alt={recipe.title}
 									/>
-									<Button
-										title={'Delete'}
-										onClick={() => handleClickOpen(recipe)}
-									/>
+									<div className="Recipes__text">
+										<h5 className="Recipes__title">
+											{recipe.title.length < 20
+												? `${recipe.title}`
+												: `${recipe.title.substring(0, 25)}...`}
+										</h5>
+										<p className="Recipes__subtitle">
+											Publisher: <span>{recipe.publisher}</span>
+										</p>
+									</div>
+									<div className="Recipes__buttons">
+										<Button
+											onClick={() => handleRecipeButton(recipe)}
+											title={'View Recipe'}
+										/>
+										<Button
+											title={'Delete'}
+											onClick={() => handleClickOpen(recipe)}
+										/>
+									</div>
 								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})
+				) : (
+					<div className="Recipes__no-recipe">No Recipe Found</div>
+				)}
 			</div>
 		</div>
 	);

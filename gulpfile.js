@@ -75,8 +75,8 @@ gulp.task('styles', cb => {
 	gulp
 		.src([
 			'src/scss/**/*.scss',
-			'../node_modules/react-toastify/dist/ReactToastify.css',
-			'../node_modules/bootstrap/scss/bootstrap.scss'
+			'node_modules/react-toastify/scss/**.scss',
+			'node_modules/bootstrap/scss/bootstrap.scss'
 		])
 		.pipe(
 			sass({

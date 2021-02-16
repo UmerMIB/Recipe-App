@@ -3,7 +3,7 @@ import Form from '../../Components/Form';
 import Recipes from './Recipes';
 import axios from 'axios';
 import '../../scss/Pages/Home/index.scss';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function App() {
 	const [recipes, setRecipies] = useState([]);
@@ -22,16 +22,12 @@ export default function App() {
 			.catch(err => {
 				console.log('err', err.response.data);
 				let error = err?.response?.data;
-
-				toast.error(
-					`Something went wrong ${
-						!!error.error.message
-							? error.error.message
-							: !!error.message
-							? error.message
-							: ''
-					}`
-				);
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+				toast.error(`Something went wrong ${error}`);
 				setRecipies([]);
 			});
 	}, []);
@@ -84,6 +80,7 @@ export default function App() {
 				handleDeleteRecipe={handleDeleteRecipe}
 				temp={temp}
 			/>
+			{/* <ToastContainer position={toast.POSITION.TOP_RIGHT} /> */}
 		</div>
 	);
 }

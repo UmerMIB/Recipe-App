@@ -103,7 +103,7 @@ const CreatUpdateRecipe = ({
 					</div>
 				</div>
 				<div className="Create-Update-Recipe__list-Recipe">
-					{data?.ingredients?.length &&
+					{!!data?.ingredients?.length &&
 						data?.ingredients.map((ingredient, index) => (
 							<li
 								key={index}
